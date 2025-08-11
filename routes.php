@@ -2,7 +2,9 @@
 
 $routes = [
     '/' => 'controller/index.php',
-    '/notes' => 'controller/notes.php',
+    '/notes' => 'controller/notes/index.php',
+    '/note'=> 'controller/notes/show.php',
+    '/note/create'=> 'controller/notes/create.php',
 ];
 
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
