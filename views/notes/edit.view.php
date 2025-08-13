@@ -15,20 +15,23 @@
                 <div class="mx-auto max-w-2xl text-center">
                     <h2 class="text-4xl font-semibold tracking-tight text-balance text-white sm:text-5xl"><?= $header ?></h2>
                 </div>
-                <form method="POST" action="/notes/store" class="mx-auto mt-16 max-w-xl sm:mt-20">
+                <form method="POST" action="/note" class="mx-auto mt-16 max-w-xl sm:mt-20">
+                    <input type="text" id="__request_method" name="__request_method" value="PATCH" hidden>
+                    <input type="text" id="id" name="id" value="<?= $note['id'] ?>" hidden>
                     <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
                         <div class="sm:col-span-2">
                             <label for="body" class="block text-sm/6 font-semibold text-white">Note</label>
                             <div class="mt-2.5">
-                                <textarea id="body" name="body" rows="4" class="block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500" required></textarea>
+                                <textarea id="body" name="body" rows="4" class="block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500" required><?= $note['body'] ?></textarea>
                             </div>
                             <?php if (isset($error['body'])): ?>
                                 <p class="text-red-500 text-sm mt-2"><?= $error['body'] ?></p>
                             <?php endif; ?>
                         </div>
                     </div>
-                    <div class="mt-10">
-                        <button type="submit" class="block w-full rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 cursor-pointer">Create</button>
+                    <div class="mt-10 flex justify-between gap-8">
+                        <a href="/notes" class="inline-flex justify-center text-sm font-semibold flex-1 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition duration-150">Cancel</a>
+                        <button type="submit" class="flex-1 w-full rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 cursor-pointer">Update</button>
                     </div>
                 </form>
             </div>

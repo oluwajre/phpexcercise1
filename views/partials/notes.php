@@ -11,10 +11,20 @@
                 <div class="bg-white p-4 rounded-lg shadow cursor-pointer hover:shadow-lg transition-shadow">
                     <a href="/note?id=<?= htmlspecialchars($id) ?>" class="text-xl font-semibold mb-2 text-blue-600 hover:underline hover:text-blue-700 transition duration-150">Note <?= array_search($note, $result) + 1 ?></a>
                     <p class="text-gray-700"><?= htmlspecialchars($body) ?></p>
-                    <div class="ms-auto text-right inline-flex justify-content-end space-x-2 mt-4">
-                        <a href="#" class="text-blue-500 hover:underline">Edit</a>
-                        <a href="#" class="text-red-500 hover:underline">Delete</a>
+
+                    <div class="mt-4 flex justify-end space-x-2">
+                        <a href="/note/edit?id=<?= htmlspecialchars($id) ?>" class="inline-flex bg-blue-500 text-white hover:bg-blue-600 cursor-pointer py-1 px-2 text-xs uppercase rounded-sm font-semibold">Edit</a>
+
+                        <form method="POST" action="/notes/destroy" class="inline-flex">
+                            <input type="text" id="__request_method" name="__request_method" value="DELETE" hidden>
+                            <input type="text" id="id" name="id" value="<?= htmlspecialchars($id) ?>" hidden>
+                            <button class="bg-red-500 text-white hover:bg-red-600 cursor-pointer py-1 px-2 text-xs uppercase rounded-sm font-semibold">
+                                Delete
+                            </button>
+                        </form>
                     </div>
+                    
+                    
                 </div>
             <?php endforeach; ?>
         </div>
