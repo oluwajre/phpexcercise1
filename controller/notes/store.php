@@ -22,6 +22,6 @@ if (empty($body)) {
         'body' => $body
     ]);
 
-    header("location: /note/create");
-exit;
+    header("Location: /notes");
+    exit;
 }
